@@ -1,0 +1,50 @@
+/**
+ * DOM Nodes
+ */
+body {
+    font-family     : sans-serif;
+    position        : relative;
+    background-color: grey;
+    margin          : unset;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width : 100%;
+    height: auto;
+}
+
+/**
+ * Classes
+ */
+.hidden {
+    display: none!important;
+}
+
+.content {
+    margin: auto;
+    width : 80%;
+}
+
+.searchbar {
+    width : 80%;
+    height: 10em;
+    margin: auto;
+
+    input {
+        width        : 100%;
+        margin       : auto;
+        height       : 5em;
+        padding-left : 5em;
+        border       : unset;
+        border-radius: 5em;
+        font-size: 1.5em;
+
+        &:focus{
+            outline: unset;
+        }
+    }
+}
