@@ -61,13 +61,13 @@ function showParentElements(classes) {
 		/**
 		 * Search bar
 		 */
-		if(document.getElementsByName('search')[0].value != null){
-			if(el.parentNode.children[1].innerText.toLowerCase().includes(document.getElementsByName('search')[0].value)){
+		if (document.getElementsByName('search')[0].value != null) {
+			if (el.parentNode.children[1].innerText.toLowerCase().includes(document.getElementsByName('search')[0].value)) {
 				el.parentNode.classList.remove('hidden');
-			}else{
+			} else {
 				el.parentNode.classList.add('hidden');
 			}
-		}else{
+		} else {
 			el.parentNode.classList.remove('hidden');
 		}
 	});
@@ -109,7 +109,7 @@ function filterWebsite(website) {
 		 */
 		showParentElements('folder-inverse ' + website);
 	} else {
-		showElements('element');
+		resetFilter();
 	}
 }
 
@@ -149,6 +149,12 @@ function showOthers() {
 			});
 		});
 	} else {
+		removeFilter();
 		document.getElementsByClassName("buttons-reverse")[0].querySelector('[class="others chosen"]').classList.remove('chosen')
 	}
+}
+
+function resetFilter() {
+	removeFilter();
+	showElements('element');
 }

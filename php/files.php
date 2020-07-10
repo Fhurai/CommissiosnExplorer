@@ -14,7 +14,6 @@ $files = \array_diff(scandir('../'.$location), $forbidden);
  * Initialization of result array
  */
 $result = array();
-$i = 0;
 foreach($files as $file){
 	/**
 	 * If current file has no extensionm scan of the folder to show first picture in it
