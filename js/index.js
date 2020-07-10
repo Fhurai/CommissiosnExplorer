@@ -3,15 +3,6 @@
  */
 
 /**
- * Variables
- */
-var listenSearchBar = function(event){
-	searchArtist(event.target.value);
-}
-
-var artistArray = [];
-
-/**
  * Functions to run to page loading
  */
 document.addEventListener('DOMContentLoaded', function(){
@@ -28,14 +19,13 @@ document.addEventListener('DOMContentLoaded', function(){
 	 */
 	Array.prototype.forEach.call(document.getElementsByClassName('buttons-reverse')[0].children, function(filter){
 		filter.addEventListener('click', function(el){
-			searchInit();
 			if(!specClasses.includes(el.target.classList[0])){
 				filterWebsite(el.target.classList[0])
 			}else{
 				if(el.target.classList[0]=='others'){
 					showOthers();
 				}else{
-					showElements('element');
+					resetFilter();
 				}
 			}
 		});
@@ -43,7 +33,11 @@ document.addEventListener('DOMContentLoaded', function(){
 	/**
 	 * Search bar
 	 */
-	document.getElementsByClassName('searchbar')[0].addEventListener('input', listenSearchBar, false);
+	
+	/**
+	 * Admin Menu
+	 */
+	createAdminMenu('button-admin');
 });
 
 /**

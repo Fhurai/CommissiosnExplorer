@@ -45,7 +45,6 @@ function loadPictures(location, node){
 		 * If ajax call success, management of response
 		 */
 		manageResponse(this, location);
-		searchInit();
 	};
 	xhr.open("POST", "./php/files.php",true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
