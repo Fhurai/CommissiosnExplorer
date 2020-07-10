@@ -23,6 +23,8 @@
 	<div class="button-artist tooltip hidden">
 		<span id="artist" onclick="gotoLink(this)">Go to artist</span>
 	</div>
+	<div class="button-admin">
+	</div>
 	<!-- Filters -->
 	<!-- addEventListener ? -->
 	<div class="buttons-reverse">
@@ -45,4 +47,6 @@
 <script src="js/move.js"></script>
 <script src="js/filter.js"></script>
 <script src="js/search.js"></script>
+<script src="js/admin.js"></script>
+
 </html>
