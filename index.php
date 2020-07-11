@@ -26,7 +26,6 @@
 <!-- Imports -->
 <script src="js/index.js"></script>
 <script src="js/move.js"></script>
-
 <?php
 $modules = file_get_contents("modules.json");
 $jsonIterator = new RecursiveIteratorIterator(
