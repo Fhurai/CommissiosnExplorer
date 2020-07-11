@@ -1,4 +1,5 @@
 {
+    "explorer": true,
     "filters": true,
     "search": true,
     "admin": true

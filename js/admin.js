@@ -48,9 +48,17 @@ function createModal() {
      */
     let bodyM = document.createElement('div');
     bodyM.classList.add('modal-body');
-    countArtworks(bodyM);
-    countArtists(bodyM);
+    /**
+     * Main stats go to a first container
+     */
+    let ms = document.createElement('div');
+    ms.classList.add('main');
+    bodyM.appendChild(ms);
+    countArtworks(ms);
+    let hr = document.createElement('hr');
+    bodyM.appendChild(hr);
     content.appendChild(bodyM);
+    countArtists(ms);
     return parent;
 }
 
@@ -90,14 +98,13 @@ function countArtists(node) {
              * Span for number of artist stat
              */
             let span = document.createElement('span');
-            span.id = 'statsArtists';
             span.innerHTML = "Number of artists : <b>" + artistArray.length + "</b>";
             node.appendChild(span);
             /**
              * Container for artworks by artist stat
              */
             let stats = document.createElement('div');
-            node.appendChild(stats);
+            node.parentElement.appendChild(stats);
             /**
              * For each artist in array, creation of number of artwork by artist stat
              */

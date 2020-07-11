@@ -135,6 +135,11 @@ function filterWebsite(website) {
 		 * Filter commissions explorer files
 		 */
 		showParentElements('folder-inverse ' + website);
+		/**
+		 * Return to top of page
+		 */
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
 	} else {
 		resetFilter();
 	}
@@ -218,15 +223,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		/**
 		 * Special case : replace & by n for A&C
 		 */
-		if(web=="Artists&Clients"){
-			f.classList.add(web.toLowerCase().replace('&','n'));
-		}else{
+		if (web == "Artists&Clients") {
+			f.classList.add(web.toLowerCase().replace('&', 'n'));
+		} else {
 			f.classList.add(web.toLowerCase());
 		}
 		/**
 		 * Click event listener
 		 */
-		f.addEventListener('click', function(filter){
+		f.addEventListener('click', function (filter) {
 			filterWebsite(filter.target.classList[0]);
 		});
 		/**
@@ -245,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		let f = document.createElement('span');
 		f.classList.add(web.toLowerCase());
 		f.innerText = web;
-		f.addEventListener('click', function(){
+		f.addEventListener('click', function () {
 			if (web == 'Others') {
 				showOthers();
 			} else {
