@@ -3,7 +3,7 @@
  **********************************************************/
 
 /** @var Array Search artist array */
-var artistArray = [];
+var listArray = [];
 
 /** @var function Old open function to keep */
 var oldOpen = XMLHttpRequest.prototype.open;
@@ -44,7 +44,7 @@ function onStateChange(event) {
          */
         Array.prototype.forEach.call(elements, function (el) {
             let str = el.children[1].innerText;
-            artistArray[str.toLowerCase().split(' ').join('')] = el;
+            listArray[str.toLowerCase().split(' ').join('')] = el;
         });
     }
 }
@@ -57,19 +57,19 @@ function searchArtist(text) {
     /**
      * For each artist in search artist array
      */
-    for (key in artistArray) {
+    for (key in listArray) {
         /**
          * if value in search bar can be found in key, then the folder is shown
          * Else, the folder is hidden
          * (If folder is already in state it should be, no action is done)
          */
         if (key.includes(text.toLowerCase().split(' ').join(''))) {
-            if (artistArray[key].style.display == 'none') {
-                artistArray[key].style.display = 'inline-block';
+            if (listArray[key].style.display == 'none') {
+                listArray[key].style.display = 'inline-block';
             }
         } else {
-            if (artistArray[key].style.display != 'none') {
-                artistArray[key].style.display = 'none';
+            if (listArray[key].style.display != 'none') {
+                listArray[key].style.display = 'none';
             }
         }
     }

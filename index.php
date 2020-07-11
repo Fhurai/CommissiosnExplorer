@@ -6,9 +6,7 @@
 </head>
 
 <body>
-	<noscript>
-		Javascript required for website usage
-	</noscript>
+	<noscript>Javascript required for website usage</noscript>
 	<!-- Explorer part -->
 	<!-- Content will be replaced with files from ajax call -->
 	<div id="content" class="content"></div>
@@ -27,12 +25,16 @@
 <script src="js/index.js"></script>
 <script src="js/move.js"></script>
 <?php
+/**
+ * Get all modules informations
+ */
 $modules = file_get_contents("modules.json");
 $jsonIterator = new RecursiveIteratorIterator(
 	new RecursiveArrayIterator(json_decode($modules, TRUE)),
 	RecursiveIteratorIterator::SELF_FIRST
 );
 ?>
+<!-- Browse through all modules informations & if module activated then js script is imported -->
 <?php foreach($jsonIterator as $key => $val): ?>
 	<?php if($val==true): ?>
 		<script src="js/<?= $key ?>.js"></script>
