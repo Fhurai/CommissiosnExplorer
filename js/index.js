@@ -7,29 +7,9 @@
  */
 document.addEventListener('DOMContentLoaded', function(){
 	/**
-	 * Initialization classes with special actions
-	 */
-	let specClasses = ['others', 'reset'];
-	/**
 	 * Loading of main commissions folder
 	 */
 	loadPictures('pictures', null);
-	/**
-	 * Filter buttons
-	 */
-	Array.prototype.forEach.call(document.getElementsByClassName('buttons-reverse')[0].children, function(filter){
-		filter.addEventListener('click', function(el){
-			if(!specClasses.includes(el.target.classList[0])){
-				filterWebsite(el.target.classList[0])
-			}else{
-				if(el.target.classList[0]=='others'){
-					showOthers();
-				}else{
-					resetFilter();
-				}
-			}
-		});
-	});
 });
 
 /**
@@ -53,7 +33,7 @@ function getInstructions(type){
 		 * Case of contact : Message the artist directly when you want. Be nice, be polite. Be patient also.
 		 */
 		case "contact":
-		instructions = "Send the artist a direct message. They don't bite !";
+		instructions = "Send the artist a direct message. They will answer you.";
 		break;
 		/**
 		 * Case of announcement : Message the artist only when they announce they take commission. If they have a formatted message to ask a commission, be sure to ask it

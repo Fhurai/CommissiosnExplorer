@@ -1,4 +1,5 @@
 {
-    "search":true,
+    "filters": true,
+    "search": true,
     "admin": true
 }

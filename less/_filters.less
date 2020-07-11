@@ -1,0 +1,139 @@
+/**
+ * Container of the all filters
+ */
+.buttons-filters {
+    position: fixed;
+    right: 0;
+    top  : 5em;
+    width: 7.5em;
+    z-index: 4;
+
+    &.choice {
+        width: 6%;
+
+        span {
+
+            &.chosen {
+                width: 170%;
+            }
+        }
+    }
+
+    span {
+        background-color: antiquewhite;
+        color           : gray;
+        font-weight     : bold;
+        padding         : 1em 0em 1em 1em;
+        width           : 7.5em;
+        cursor          : pointer;
+        border: 2px solid transparent;
+        float: right;
+
+        &.artistsnclients {
+            background-color: purple;
+            color           : white;
+            border-color    : white;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px purple;
+            }
+        }
+    
+        &.deviantart {
+            background-color: black;
+            color           : lightgreen;
+            border-color    : lightgrey;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px lightgreen;
+            }
+        }
+    
+        &.fanbox {
+            background-color: rgb(255, 187, 40);
+            color           : white;
+            border-color    : white;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px rgb(255, 187, 40);
+                ;
+            }
+        }
+    
+        &.hentai-foundry {
+            background-color: black;
+            color           : pink;
+            border-color    : pink;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px black;
+            }
+        }
+    
+        &.patreon {
+            background-color: white;
+            color           : orange;
+            border-color    : orange;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px white;
+            }
+        }
+    
+        &.picarto {
+            background-color: black;
+            color           : white;
+            border-color    : lightgreen;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px black;
+            }
+        }
+    
+        &.skeb {
+            background-color: white;
+            color           : darkseagreen;
+            border-color    : darkgreen;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px white;
+            }
+        }
+    
+        &.twitter {
+            background-color: darkblue;
+            color           : lightgrey;
+            border-color    : lightgrey;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px darkblue;
+            }
+        }
+    
+        &.fransmensink,
+        &.nekoarashi {
+            background-color: black;
+            color           : white;
+            border-color    : white;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px black;
+            }
+        }
+    
+        &.empty {
+            background-color: transparent;
+            color           : transparent;
+            border-color    : transparent;
+    
+            &:hover {
+                box-shadow: 2px 2px 10px transparent;
+            }
+        }
+
+        &:hover {
+            opacity: 0.75;
+            box-shadow      : 2px 2px 10px darkgray;
+        }
+    }
+}

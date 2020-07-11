@@ -1,5 +1,16 @@
-var listArtists = "";
+/**********************************************************
+ * Variables
+ **********************************************************/
+/** @var array array of artists */
+var artistArray = "";
 
+/**********************************************************
+ * Functions
+ **********************************************************/
+
+ /**
+  * Modal creation function
+  */
 function createModal() {
     /**
      * Whole modal with black screen
@@ -43,25 +54,54 @@ function createModal() {
     return parent;
 }
 
+/**
+ * Function shows the admin menu on click event
+ * @param {Event} event 
+ */
 function showAdminMenu(event) {
+    /**
+     * Get all buttons in admin menu
+     */
     let children = event.target.parentNode.children;
+    /**
+     * Toggle hidden class for all butttons
+     */
     Array.prototype.forEach.call(children, function (el) {
         el.classList.toggle('hidden');
     });
 }
 
+/**
+ * Function counting artist folders
+ * @param {Node} node container where to place artists stats
+ */
 function countArtists(node) {
+    /**
+     * @var {XMLHttpRequest} xhr ajax call object
+     */
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            listArtists = JSON.parse(this.response);
+            /**
+             * Parse the ajax response into array of artists
+             */
+            artistArray = JSON.parse(this.response);
+            /**
+             * Span for number of artist stat
+             */
             let span = document.createElement('span');
             span.id = 'statsArtists';
-            span.innerHTML = "Number of artists : <b>" + listArtists.length + "</b>";
+            span.innerHTML = "Number of artists : <b>" + artistArray.length + "</b>";
             node.appendChild(span);
+            /**
+             * Container for artworks by artist stat
+             */
             let stats = document.createElement('div');
             node.appendChild(stats);
-            Array.prototype.forEach.call(listArtists, function (ar) {
+            /**
+             * For each artist in array, creation of number of artwork by artist stat
+             */
+            Array.prototype.forEach.call(artistArray, function (ar) {
                 statsByArtist(ar, stats);
             });
         }
@@ -71,10 +111,21 @@ function countArtists(node) {
     xhr.send("location=pictures");
 }
 
+/**
+ * Function to create artwork stat
+ * Stat is put into node
+ * @param {Node} node 
+ */
 function countArtworks(node) {
+    /**
+     * @var {XMLHttpRequest} xhr ajax call object
+     */
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            /**
+             * Span for total artworks count
+             */
             let span = document.createElement('span');
             span.innerHTML = "Number of artworks : <b>" + JSON.parse(this.response) + "</b>";
             node.appendChild(span);
@@ -85,10 +136,21 @@ function countArtworks(node) {
     xhr.send("location=pictures");
 }
 
+/**
+ * FUnciton to create artwork by artist stat
+ * @param {Array} artist artist informations
+ * @param {Node} node node to put stat into
+ */
 function statsByArtist(artist, node) {
+    /**
+     * @var {XMLHttpRequest} xhr ajax call object
+     */
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            /**
+             * Span for stat
+             */
             let span = document.createElement('span');
             span.innerHTML = "Artworks by " + artist[0] + " : <b>" + JSON.parse(this.response) + "</b>";
             node.appendChild(span);
@@ -98,6 +160,10 @@ function statsByArtist(artist, node) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("location=pictures/" + artist[0]);
 }
+
+/**********************************************************
+ * Execution in file loading
+ **********************************************************/
 
 document.addEventListener('DOMContentLoaded', function(){
     /**
