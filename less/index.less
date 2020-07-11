@@ -1,7 +1,33 @@
-@import '_main.less';
 @import '_explorer.less';
-@import '_buttons.less';
-@import '_tooltips.less';
 @import '_filters.less';
 @import '_search.less';
 @import '_admin.less';
+
+body {
+    font-family     : sans-serif;
+    position        : relative;
+    background-color: grey;
+    margin          : unset;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width : 100%;
+    height: auto;
+}
+
+noscript {
+    font-weight     : bold;
+    width           : 20em;
+    background-color: antiquewhite;
+    margin          : 15em auto;
+    display         : block;
+    padding         : 2em;
+}
+
+.hidden {
+    display: none !important;
+}
