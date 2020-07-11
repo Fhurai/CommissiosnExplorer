@@ -16,15 +16,6 @@ function loadPictures(location, node){
 	 */
 	getWebsite(location, node);
 	/**
-	 * If not home page commissions explorer, hide filter buttons
-	 * Else show them but disabled
-	 */
-	if(location!='pictures'){
-		document.getElementsByClassName('buttons-reverse')[0].style.display = 'none';
-	}else{
-		document.getElementsByClassName('buttons-reverse')[0].style.display = 'block';
-	}
-	/**
 	 * Stop window loading
 	 */
 	window.stop();
