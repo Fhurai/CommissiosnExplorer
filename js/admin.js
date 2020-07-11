@@ -1,53 +1,5 @@
 var listArtists = "";
 
-function createAdminMenu(nodeMenu) {
-    /**
-     * Nodes
-     */
-    let parent = document.getElementsByClassName(nodeMenu)[0];
-    /**
-     * Add show menu button
-     */
-    let show = document.createElement('span');
-    show.innerText = "Admin";
-    show.addEventListener('click', showAdminMenu);
-    parent.appendChild(show);
-    /**
-     * Add Show NSFW button
-     */
-    // let nsfw = document.createElement('span');
-    // nsfw.innerText = "Show NSFW";
-    // nsfw.classList.add("hidden");
-    // parent.appendChild(nsfw);
-    /**
-     * Add stats button
-     */
-    let stats = document.createElement('span');
-    stats.innerText = "Stats";
-    stats.classList.add("hidden");
-    parent.appendChild(stats);
-    /**
-     * Stats modal
-     */
-    let modal = createModal();
-    stats.addEventListener('click', function () {
-        modal.style.display = 'block';
-    });
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    /**
-     * Add hide menu button
-     */
-    let hide = document.createElement('span');
-    hide.innerText = "Hide menu";
-    hide.classList.add("hidden");
-    hide.addEventListener('click', showAdminMenu);
-    parent.appendChild(hide);
-}
-
 function createModal() {
     /**
      * Whole modal with black screen
@@ -104,6 +56,7 @@ function countArtists(node) {
         if (this.readyState == 4 && this.status == 200) {
             listArtists = JSON.parse(this.response);
             let span = document.createElement('span');
+            span.id = 'statsArtists';
             span.innerHTML = "Number of artists : <b>" + listArtists.length + "</b>";
             node.appendChild(span);
             let stats = document.createElement('div');
@@ -145,3 +98,46 @@ function statsByArtist(artist, node) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("location=pictures/" + artist[0]);
 }
+
+document.addEventListener('DOMContentLoaded', function(){
+    /**
+     * Admin menu container
+     */
+    let d = document.createElement('div');
+    d.classList.add('button-admin');
+    document.body.appendChild(d);
+    /**
+     * Add show menu button
+     */
+    let show = document.createElement('span');
+    show.innerText = "Admin";
+    show.addEventListener('click', showAdminMenu);
+    d.appendChild(show);
+    /**
+     * Add stats button
+     */
+    let stats = document.createElement('span');
+    stats.innerText = "Stats";
+    stats.classList.add("hidden");
+    d.appendChild(stats);
+    /**
+     * Stats modal
+     */
+    let modal = createModal();
+    stats.addEventListener('click', function () {
+        modal.style.display = 'block';
+    });
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    /**
+     * Add hide menu button
+     */
+    let hide = document.createElement('span');
+    hide.innerText = "Hide menu";
+    hide.classList.add("hidden");
+    hide.addEventListener('click', showAdminMenu);
+    d.appendChild(hide);
+});

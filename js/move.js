@@ -5,9 +5,12 @@
  */
 function loadPictures(location, node){
 	/**
-	 * Search bar
+	 * Creation of location container
 	 */
-	document.getElementsByName('search')[0].value = "";
+	let d = document.createElement('div');
+	d.innerText = location;
+	d.id = 'location';
+	d.classList.add('hidden');
 	/**
 	 * Artist button method
 	 */
@@ -18,11 +21,8 @@ function loadPictures(location, node){
 	 */
 	if(location!='pictures'){
 		document.getElementsByClassName('buttons-reverse')[0].style.display = 'none';
-		document.getElementsByClassName('searchBar')[0].classList.add('hidden');
 	}else{
 		document.getElementsByClassName('buttons-reverse')[0].style.display = 'block';
-		document.getElementsByClassName('searchBar')[0].classList.remove('hidden');
-		removeFilter();
 	}
 	/**
 	 * Stop window loading
@@ -36,6 +36,7 @@ function loadPictures(location, node){
 	 * Emptying commissions explorer
 	 */
 	document.getElementById("content").innerHTML = '';
+	document.getElementById("content").appendChild(d);
 	/**
 	 * Ajax call preparation
 	 */
