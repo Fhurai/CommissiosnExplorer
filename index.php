@@ -6,10 +6,9 @@
 </head>
 
 <body>
-	<!-- Search bar -->
-	<div class="searchbar">
-		<input name="search" type="text" placeholder="Your artist search here...">
-	</div>
+	<noscript>
+		Javascript required for website usage
+	</noscript>
 	<!-- Explorer part -->
 	<!-- Content will be replaced with files from ajax call -->
 	<div id="content" class="content"></div>
@@ -23,10 +22,7 @@
 	<div class="button-artist tooltip hidden">
 		<span id="artist" onclick="gotoLink(this)">Go to artist</span>
 	</div>
-	<div class="button-admin">
-	</div>
 	<!-- Filters -->
-	<!-- addEventListener ? -->
 	<div class="buttons-reverse">
 		<span class="artistsnclients">Artists&Clients</span>
 		<span class="deviantart">Deviantart</span>
@@ -46,7 +42,17 @@
 <script src="js/index.js"></script>
 <script src="js/move.js"></script>
 <script src="js/filter.js"></script>
-<script src="js/search.js"></script>
-<script src="js/admin.js"></script>
 
+<?php
+$modules = file_get_contents("modules.json");
+$jsonIterator = new RecursiveIteratorIterator(
+	new RecursiveArrayIterator(json_decode($modules, TRUE)),
+	RecursiveIteratorIterator::SELF_FIRST
+);
+?>
+<?php foreach($jsonIterator as $key => $val): ?>
+	<?php if($val==true): ?>
+		<script src="js/<?= $key ?>.js"></script>
+	<?php endif; ?>
+<?php endforeach; ?>
 </html>

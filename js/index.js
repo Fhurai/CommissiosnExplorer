@@ -30,14 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
 			}
 		});
 	});
-	/**
-	 * Search bar
-	 */
-	
-	/**
-	 * Admin Menu
-	 */
-	createAdminMenu('button-admin');
 });
 
 /**
