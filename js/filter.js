@@ -58,18 +58,7 @@ function showParentElements(classes) {
 	 */
 	let elements = document.getElementsByClassName(classes);
 	Array.prototype.forEach.call(elements, function (el) {
-		/**
-		 * Search bar
-		 */
-		if (document.getElementsByName('search')[0].value != null) {
-			if (el.parentNode.children[1].innerText.toLowerCase().includes(document.getElementsByName('search')[0].value)) {
-				el.parentNode.classList.remove('hidden');
-			} else {
-				el.parentNode.classList.add('hidden');
-			}
-		} else {
-			el.parentNode.classList.remove('hidden');
-		}
+		el.parentNode.classList.remove('hidden');
 	});
 }
 

@@ -17,17 +17,36 @@ var oldOpen = XMLHttpRequest.prototype.open;
  * @param {Event} event ReadyStateChange
  */
 function onStateChange(event) {
-    /**
-     * Recuperation of all folders
-     */
-    let elements = document.getElementsByClassName('element');
-    /**
-     * For each folder, name is got and put in search artist array
-     */
-    Array.prototype.forEach.call(elements, function (el) {
-        let str = el.children[1].innerText;
-        artistArray[str.toLowerCase().split(' ').join('')] = el;
-    });
+    if (event.target.readyState == 4) {
+        /**
+         * Empty the search bar before reinitialisation of folders
+         */
+        if (document.getElementsByName('search').length > 0) {
+            document.getElementsByName('search')[0].value = "";
+        }
+        /**
+         * 
+         */
+        if (isNaN(event.target.response) && typeof event.target.response == 'string') {
+            if (document.getElementById('location').innerText!=='pictures') {
+                document.getElementsByClassName('searchBar')[0].classList.add('hidden');
+            } else {
+                document.getElementsByClassName('searchBar')[0].classList.remove('hidden');
+                removeFilter();
+            }
+        }
+        /**
+         * Recuperation of all folders
+         */
+        let elements = document.getElementsByClassName('element');
+        /**
+         * For each folder, name is got and put in search artist array
+         */
+        Array.prototype.forEach.call(elements, function (el) {
+            let str = el.children[1].innerText;
+            artistArray[str.toLowerCase().split(' ').join('')] = el;
+        });
+    }
 }
 
 /**
@@ -56,6 +75,10 @@ function searchArtist(text) {
     }
 }
 
+/**********************************************************
+ * Execution in file loading
+ **********************************************************/
+
 /**
  * Function to add event listener after each xhr call
  */
@@ -65,8 +88,30 @@ XMLHttpRequest.prototype.open = function () {
 }
 
 /**
- * Initialisation of event for search bar
+ * Function to create DOM nodes at the page loading
+ * Addind the event on the nodes created
  */
-document.getElementsByClassName('searchbar')[0].addEventListener('input', function (event) {
-    searchArtist(event.target.value);
-}, false);
+document.addEventListener('DOMContentLoaded', function () {
+    /**
+     * Creation
+     */
+    let i = document.createElement('input');
+    i.type = 'text';
+    i.placeholder = 'Your artist search here...';
+    /**
+     * Initialisation of event for search bar
+     */
+    i.addEventListener('input', function (event) {
+        searchArtist(event.target.value);
+    }, false);
+    /**
+     * Creation of search bar container
+     */
+    let d = document.createElement('div');
+    d.classList.add('searchbar');
+    d.appendChild(i);
+    /**
+     * Adding the container in the page body
+     */
+    document.body.appendChild(d);
+});
