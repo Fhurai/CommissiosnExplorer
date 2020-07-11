@@ -1,6 +1,6 @@
 {
-    "explorer": true,
-    "filters": true,
-    "search": true,
-    "admin": true
+    "explorer": false,
+    "filters": false,
+    "search": false,
+    "admin": false
 }
