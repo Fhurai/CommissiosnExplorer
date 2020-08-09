@@ -38,7 +38,7 @@ foreach($files as $file){
 	/**
 	 * If file has not a forbidden extension
 	 */
-	if(!is_numeric(array_search($fileParts['extension'], array('ZTL', 'mp4','webm')))){
+	if(array_key_exists('extension', $fileParts)&&!is_numeric(array_search($fileParts['extension'], array('ZTL', 'mp4','webm')))){
 		/**
 		 * If current file is a folder containing a settings file, data from settings files inserted in file array
 		 * else, file array is name of file and picture link
@@ -48,6 +48,8 @@ foreach($files as $file){
 		}else{
 			array_push($result, array($file, '', $pic));
 		}	
+	}else{
+		array_push($result, array($file, '', $pic));
 	}
 }
 /**
