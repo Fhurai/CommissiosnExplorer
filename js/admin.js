@@ -63,6 +63,64 @@ function createModal() {
 }
 
 /**
+  * Mentions modal creation function
+  */
+function createMentionsModal(){
+    /**
+     * Whole modal with black screen
+     */
+    let parent = document.createElement('div');
+    parent.classList.add('modal');
+    document.getElementsByTagName('body')[0].appendChild(parent);
+    /**
+     * Content of the modal
+     */
+    let content = document.createElement('div');
+    content.classList.add('modal-content');
+    parent.appendChild(content);
+    /**
+     * Header Modal
+     */
+    let header = document.createElement('div');
+    header.classList.add('modal-header');
+    content.appendChild(header);
+    /**
+     * Elements header
+     */
+    let span = document.createElement('span');
+    span.classList.add('close');
+    span.innerHTML = '&times;';
+    header.appendChild(span);
+    span.addEventListener('click', function () {
+        parent.style.display = 'none';
+    });
+    let title = document.createElement('h2');
+    title.innerText = 'Mentions commissions explorer';
+    header.appendChild(title);
+    /**
+     * Body Modal
+     */
+    let bodyM = document.createElement('div');
+    bodyM.classList.add('modal-body');
+    /**
+     * Main stats go to a first container
+     */
+    let ms = document.createElement('div');
+    ms.classList.add('main');
+    let sp1 = document.createElement('span');
+    sp1.innerText = 'Commissions explorer created by @Fhurai on Twitter. DM open.';
+    ms.appendChild(sp1);
+    let sp2 = document.createElement('span');
+    sp2.innerText = 'Also available on Discord at Fhurai#3907.';
+    ms.appendChild(sp2);
+    bodyM.appendChild(ms);
+    let hr = document.createElement('hr');
+    bodyM.appendChild(hr);
+    content.appendChild(bodyM);
+    return parent;
+}
+
+/**
  * Function shows the admin menu on click event
  * @param {Event} event 
  */
@@ -186,6 +244,25 @@ document.addEventListener('DOMContentLoaded', function(){
     show.innerText = "Admin";
     show.addEventListener('click', showAdminMenu);
     d.appendChild(show);
+    /**
+     * Add stats button
+     */
+    let mentions = document.createElement('span');
+    mentions.innerText = "Created by Fhurai";
+    mentions.classList.add("hidden");
+    d.appendChild(mentions);
+    /**
+     * Mentions modal
+     */
+    let mentionsmodal = createMentionsModal();
+    mentions.addEventListener('click', function(){
+        mentionsmodal.style.display = 'block'
+    });
+    window.onclick = function (event) {
+        if (event.target == mentionsmodal) {
+            mentionsmodal.style.display = "none";
+        }
+    }
     /**
      * Add stats button
      */

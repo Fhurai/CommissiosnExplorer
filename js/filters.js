@@ -3,7 +3,7 @@
  **********************************************************/
 
 /** @var {Array} websiteArray Array of website who are used for links */
-var websiteArray = ['Artists&Clients', 'Deviantart', 'Fanbox', 'Hentai-foundry', 'Patreon', 'Picarto', 'Skeb', 'Twitter'];
+var websiteArray = ['Artists&Clients', 'Artstation', 'Deviantart', 'Discord', 'Fanbox', 'Furraffinity', 'Hentai-foundry', 'Patreon', 'Picarto', 'Skeb', 'Twitter'];
 
 /** @var {Array} specClasses */
 let specClasses = ['Others', 'Reset'];
