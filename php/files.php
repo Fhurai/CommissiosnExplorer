@@ -22,15 +22,19 @@ foreach($files as $file){
 	$fileParts = pathinfo($file);
 	if(!array_key_exists('extension', $fileParts)){
 		$imgs = \array_diff(scandir('../'.$location.'/'.$file), $forbidden);
-		$imgsParts = pathinfo(array_values($imgs)[0]);
-		/**
-		 * If no picture in folder or files with forbidden extension, show default folder picture,
-		 * else recuperation picture link
-		 */
-		if(!array_key_exists('extension', $imgsParts) || is_numeric(array_search($imgsParts['extension'], array('ZTL', 'mp4', 'webm')))){
-			$pic = '/folder-icon.png';
+		if(!empty($imgs)){
+			$imgsParts = pathinfo(array_values($imgs)[0]);
+			/**
+			 * If no picture in folder or files with forbidden extension, show default folder picture,
+			 * else recuperation picture link
+			 */
+			if(!array_key_exists('extension', $imgsParts) || is_numeric(array_search($imgsParts['extension'], array('ZTL', 'mp4', 'webm')))){
+				$pic = '/folder-icon.png';
+			}else{
+				$pic = '/'.array_values($imgs)[0];
+			}
 		}else{
-			$pic = '/'.array_values($imgs)[0];
+			$pic = '/folder-icon.png';
 		}
 	}else{
 		$pic = "";
