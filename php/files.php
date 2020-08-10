@@ -42,7 +42,8 @@ foreach($files as $file){
 	/**
 	 * If file has not a forbidden extension
 	 */
-	if($pic == '/folder-icon.png'){
+	$imgsParts = pathinfo($pic);
+	if(!array_key_exists('extension', $imgsParts) || !is_numeric(array_search($imgsParts['extension'], array('ZTL', 'mp4', 'webm')))){
 		/**
 		 * If current file is a folder containing a settings file, data from settings files inserted in file array
 		 * else, file array is name of file and picture link
